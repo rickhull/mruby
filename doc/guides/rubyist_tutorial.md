@@ -20,7 +20,8 @@ differently, mostly in that mgems are incorporated at build time whereas
 # Objective
 
 Write a hello_world.rb file that calls `Sleep.sleep`.  mruby does not have any
-sleep built in.  In order to sleep, we need the mruby-sleep mgem.
+sleep built in.  In order to sleep, we need the
+[mruby-sleep](https://github.com/matsumotory/mruby-sleep) mgem.
 
 What follows is a step by step procedure to accomplish and demonstrate the
 objective.  As mruby is heavily C-based, there is a great deal of flexibility
