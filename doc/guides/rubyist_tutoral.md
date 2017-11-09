@@ -31,7 +31,7 @@ and this procedure may improve over time.
 * Linux
 * gcc
 * ruby (MRI)
-* ruby-install - https://github.com/postmodern/ruby-install
+* [ruby-install](https://github.com/postmodern/ruby-install)
 
 # Here goes nothing
 
