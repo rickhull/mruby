@@ -101,7 +101,7 @@ with additional mgems, which are vaguely similar to gems in the MRI world.
 ## Create build_config.rb
 
 ```
-# echo 'puts "BUILD CONFIG: #{__FILE__}"' > build_config
+# echo 'puts "BUILD CONFIG: #{__FILE__}"' > build_config.rb
 ```
 
 ## Edit build_config.rb
