@@ -14,6 +14,13 @@ This document does not contain a complete list of limitations.
 Please help to improve it by submitting your findings.
 
 
+## No require
+
+mruby does not have a `require` method.  When a .rb file is processed by the
+mruby interpreter, all ruby code must be in that one file or else built into
+mruby interpreter, typically via mgems.  This has a substantial effect on how
+mruby projects are organized.
+
 ## ```1/2``` gives ```0.5```
 
 Since mruby does not have ```Bignum```, bigger integers are represented
