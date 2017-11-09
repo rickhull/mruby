@@ -100,11 +100,12 @@ hello_world.rb:2:uninitialized constant Sleep (NameError)
 
 In order to call `Sleep.sleep`, we need to "load" that functionality.
 In the mruby world, this is done by rebuilding the mruby interpreter itself
-with additional mgems, which are vaguely similar to gems in the MRI world.
+with additional mgems.
 
 ## Create build_config.rb
 
 ```
+# cd $PROJ_DIR
 # echo 'puts "BUILD CONFIG: #{__FILE__}"' > build_config.rb
 ```
 
