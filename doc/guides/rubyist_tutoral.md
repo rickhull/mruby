@@ -10,8 +10,12 @@ lib/ bin/ test/ (etc) is not easily or typically performed.  The mruby
 methodology is to rebuild the mruby interpreter with mgems built in.  This
 acts like lib/ in a standard ruby project.  Once the mruby interpreter is
 rebuilt with the desired lib/ functionality (via mgems), it can accept a
-single .rb file on the command line, where that .rb file acts like a "script"
-or "driver".
+single .rb file on the command line, where that .rb file can act like a
+"script" or "driver".
+
+Mgems are roughly similar to gems in the MRI world, but they behave
+differently, mostly in that mgems are incorporated at build time whereas
+(MRI) gems are incorporated at run time.
 
 # Objective
 
@@ -94,7 +98,7 @@ hello_world.rb:2:uninitialized constant Sleep (NameError)
 
 # Rebuild mruby
 
-In order to be able to call Sleep.sleep, we need to "load" that functionality.
+In order to call `Sleep.sleep`, we need to "load" that functionality.
 In the mruby world, this is done by rebuilding the mruby interpreter itself
 with additional mgems, which are vaguely similar to gems in the MRI world.
 
