@@ -43,7 +43,7 @@ and this procedure may improve over time.
 ## Install mruby via ruby-install
 
 ```
-# ruby-install mruby
+$ ruby-install mruby
 ```
 
 By default, the mruby source will live at e.g. `~/src/mruby-1.3.0`
@@ -51,27 +51,27 @@ By default, the mruby source will live at e.g. `~/src/mruby-1.3.0`
 Confirm this location, and then do something like
 
 ```
-# MRUBY_SRC=~/src/mruby-1.3.0
+$ MRUBY_SRC=~/src/mruby-1.3.0
 ```
 
 ## Create project dir
 
 ```
-# PROJ_DIR=~/mruby/sleep_world
-# mkdir -p $PROJ_DIR
-# cd $PROJ_DIR
+$ PROJ_DIR=~/mruby/sleep_world
+$ mkdir -p $PROJ_DIR
+$ cd $PROJ_DIR
 ```
 
 ## Create hello_world.rb
 
 ```
-# echo "puts :hello_world" > hello_world.rb
+$ echo "puts :hello_world" > hello_world.rb
 ```
 
 ## Confirm execution via `mruby`
 
 ```
-# $MRUBY_SRC/bin/mruby hello_world.rb
+$ $MRUBY_SRC/bin/mruby hello_world.rb
 ```
 
 ```
@@ -81,13 +81,13 @@ hello_world
 ## Add a call to Sleep.sleep
 
 ```
-# echo "Sleep.sleep 1" >> hello_world.rb
+$ echo "Sleep.sleep 1" >> hello_world.rb
 ```
 
 ## Confirm NameError
 
 ```
-# $MRUBY_SRC/bin/mruby hello_world.rb
+$ $MRUBY_SRC/bin/mruby hello_world.rb
 ```
 
 ```
@@ -106,13 +106,8 @@ with additional mgems.
 ## Create build_config.rb
 
 ```
-# cd $PROJ_DIR
-# echo 'puts "BUILD CONFIG: #{__FILE__}"' > build_config.rb
-```
-
-## Edit build_config.rb
-
-```
+$ cd $PROJ_DIR
+$ cat <<EOF > build_config.rb
 puts "BUILD CONFIG: #{__FILE__}"
 
 MRuby::Build.new do |conf|
@@ -121,20 +116,21 @@ MRuby::Build.new do |conf|
   conf.gem "#{root}/mrbgems/mruby-bin-mruby"
   conf.gembox 'default'
 end
+EOF
 ```
 
 ## Tell mruby where build_config.rb lives
 
 ```
-# export MRUBY_CONFIG=$PROJ_DIR/build_config.rb
+$ export MRUBY_CONFIG=$PROJ_DIR/build_config.rb
 ```
 
 ## Build mruby
 
 ```
-# cd $MRUBY_SRC
-# ./minirake deep_clean
-# ./minirake
+$ cd $MRUBY_SRC
+$ ./minirake deep_clean
+$ ./minirake
 ```
 
 Confirm that you see "BUILD CONFIG: path/to/build_config.rb" near the top of
@@ -143,8 +139,8 @@ the output.
 ## Run hello_world.rb with the new mruby
 
 ```
-# cd $PROJ_DIR
-# $MRUBY_SRC/bin/mruby hello_world.rb
+$ cd $PROJ_DIR
+$ $MRUBY_SRC/bin/mruby hello_world.rb
 ```
 
 ```
@@ -161,24 +157,23 @@ source tree into $PROJ_DIR and keep $MRUBY_SRC pristine.
 ## Copy mruby source tree into $PROJ_DIR
 
 ```
-# cd $PROJ_DIR
-# cp -R $MRUBY_SRC mruby_src
+$ cd $PROJ_DIR
+$ cp -R $MRUBY_SRC mruby_src
 ```
 
 ## Rebuild mruby inside $PROJ_DIR
 
 ```
-# cd mruby_src
-# ./minirake deep_clean
-# ./minirake
-# cd ..
+$ cd mruby_src
+$ ./minirake deep_clean
+$ ./minirake
+$ cd ..
 ```
 
 ## Confirm hello_world.rb again
 
 ```
-# cd $PROJ_DIR
-# mruby_src/bin/mruby hello_world.rb
+$ mruby_src/bin/mruby hello_world.rb
 ```
 
 ```
